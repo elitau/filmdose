@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  director_id: 1
+  description: MyText
+  release_date: 2008-08-04
+  length: 1
+  extras: MyString
+
+two:
+  title: MyString
+  director_id: 1
+  description: MyText
+  release_date: 2008-08-04
+  length: 1
+  extras: MyString
