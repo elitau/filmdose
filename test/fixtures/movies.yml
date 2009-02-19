@@ -1,14 +1,15 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  title: MyString
+rocky:
+  title: Rocky - The Complete Saga (6 DVDs)
   director_id: 1
   description: MyText
-  release_date: 2008-08-04
+  release_date: 
   length: 1
   extras: MyString
+  amazon_id: B000TIQMNC
 
-two:
+one:
   title: MyString
   director_id: 1
   description: MyText

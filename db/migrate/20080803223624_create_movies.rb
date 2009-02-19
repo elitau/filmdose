@@ -7,7 +7,7 @@ class CreateMovies < ActiveRecord::Migration
       t.date :release_date
       t.integer :length
       t.string :extras
-
+ 
       t.timestamps
     end
   end

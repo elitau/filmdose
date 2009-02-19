@@ -1,6 +1,14 @@
 class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
+  # auto_complete_for :movie, :title
+  # after_filter :do_stuff
+  
+  def do_stuff
+    # Movie
+    Movie.find
+  end
+  
   def index
     @movies = Movie.find(:all)
 
@@ -35,6 +43,11 @@ class MoviesController < ApplicationController
   # GET /movies/1/edit
   def edit
     @movie = Movie.find(params[:id])
+  end
+
+  def auto_complete_for_movie_title
+    @items = AmazonWs.find_by_title(params[:q]).collect(&:title)
+    render :text => @items.join("\n")
   end
 
   # POST /movies
