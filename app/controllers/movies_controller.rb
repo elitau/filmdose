@@ -46,15 +46,12 @@ class MoviesController < ApplicationController
   def auto_complete_for_movie_details
     @items = AmazonWs.find_by_title(params[:q])
     @movie = AmazonWs.find_by_amazon_id(@items.first.amazon_id)
-    # @movie.save
-    # session[:movie] = @movie
     render :partial => "selected_movie", :locals => { :movie => @items.first } 
   end
 
   # POST /movies
   # POST /movies.xml
   def create
-    # @movie = session[:movie]
     @movie = AmazonWs.find_by_amazon_id(params[:amazon_id])
     @movie.title = params[:movie][:title]
     respond_to do |format|
@@ -67,7 +64,6 @@ class MoviesController < ApplicationController
         format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
       end
     end
-    session[:movie] = nil
   end
 
   # PUT /movies/1
