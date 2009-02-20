@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.auto_complete ':controller/:action', 
-                    :requirements => { :action => /auto_complete_for_\S+/ },
-                    :conditions => { :method => :get }
+                    :requirements => { :action => /auto_complete_for_\S+/ }
   map.resources :movies#, :member => { :auto_complete_for_movie_title => :get } 
 
   # The priority is based upon order of creation: first created -> highest priority.

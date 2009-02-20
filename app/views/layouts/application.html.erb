@@ -8,9 +8,10 @@
 <%= stylesheet_link_tag 'jquery.autocomplete' %>
 <!-- <link href="css/layout_2col_right_13.css" rel="stylesheet" type="text/css"/> -->
 
-<%= javascript_include_tag "jquery-1.3.1" %>
-<!-- TODO: jquery autocomplete js einbetten -->
-<%= javascript_include_tag 'jquery-autocomplete/jquery.autocomplete', 
+<%= javascript_include_tag "jquery" %>
+<%# javascript_include_tag "jquery-ui.js" %>
+<%= javascript_include_tag 'dyve_autocomplete' %>
+<%# javascript_include_tag 'jquery-autocomplete/jquery.autocomplete', 
       'jquery-autocomplete/lib/jquery.bgiframe.min', 
       'jquery-autocomplete/jquery.autocomplete', 
       :cache => 'jquery' %>
@@ -61,11 +62,7 @@
       <div id="col3">
         <div id="col3_content" class="clearfix">
           <h2>Column  #col3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed.</p>
-          <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam malesuada   suscipit pede. Nullam ipsum lacus, varius vel, nonummy in, consequat ut, neque.   Vivamus viverra. Duis dolor arcu, lacinia sit amet, sollicitudin sed, aliquet   vel, quam. Pellentesque molestie laoreet tortor. </p>
-          </blockquote>
-          <p>Nulla vitae mauris. Phasellus vel ligula quis dolor bibendum egestas. Duis a   massa ut orci varius placerat. Sed leo nulla, tempor nec.</p>
+            <%= yield(:side) || "Type in a movie title" %>
         </div>
         <div id="ie_clearing">&nbsp;</div>
         <!-- End: IE Column Clearing -->

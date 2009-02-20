@@ -1,0 +1,8 @@
+<ul>
+  <li>Directors: <%= movie.directors.collect(&:name).join(', ') %></li>
+  <li>Actors: <%= movie.actors.collect(&:name).join(', ') %></li>
+  <li>Amazon-ID(ASIN): <%= movie.amazon_id %></li>
+  <li><%= image_tag movie.cover.url %></li>
+</ul>
+
+<%= hidden_field_tag :amazon_id, movie.amazon_id %>

@@ -51,7 +51,7 @@ Rails::Initializer.run do |config|
     :session_key => '_filmdose_session',
     :secret      => '2fa74df4831a530a81b7d2a6aa592570e06c5292d302730b41974f7bc794fb684d5fd66897fbfe2d988a5c62eaaa8b4593c1f207caeedf52bc4ce510af0bcaaf'
   }
-
+  
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
   # (create the session table with "rake db:sessions:create")

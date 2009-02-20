@@ -5,7 +5,7 @@ class AmazonWsTest < ActiveSupport::TestCase
 
   def setup
     $TESTING = true
-    @search_key = 'Rocky Balboa'
+    @search_key = 'dark knight'
   end
   
   def test_search
@@ -46,15 +46,22 @@ class AmazonWsTest < ActiveSupport::TestCase
   end
   
   def mock_amazon_search_results(title, amazon_id)
-    mock = Amazon::AWS::AWSObject
+    mock = mock('results_mock')
     # mock.stubs(:title => title)
     item_attributes = stub("item_attributes", :title => title)
+    item_attributes.stubs(:director => "Some Director")
+    item_attributes.stubs(:actor => "Some Actor")
     item = stub('item', :item_attributes => item_attributes, :asin => amazon_id)
+    
+    image = mock("image_mock")
+    image.stubs(:get => File.open(File.dirname(__FILE__) + '/../assets/tester.jpg'))
+    item.stubs(:large_image => image)
     items = [item, item]
     items.stubs(:item => item)
     search_response = stub("search_response")
     search_response.stubs(:items => search_response, :item => items)
     mock.stubs(:item_search_response => search_response)
+    mock.stubs(:empty? => false)
     mock
   end
   

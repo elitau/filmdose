@@ -13,7 +13,7 @@
 <% for movie in @movies %>
   <tr>
     <td><%=h movie.title %></td>
-    <td><%=h movie.director_id %></td>
+    <td><%=h movie.directors.collect(&:name) %></td>
     <td><%=h movie.description %></td>
     <td><%=h movie.release_date %></td>
     <td><%=h movie.length %></td>

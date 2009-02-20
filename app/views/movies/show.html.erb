@@ -4,8 +4,13 @@
 </p>
 
 <p>
-  <b>Director:</b>
-  <%=h @movie.director_id %>
+  <b>Directors:</b>
+  <%=h @movie.directors.collect(&:name).join(', ') %>
+</p>
+
+<p>
+  <b>Actors:</b>
+  <%=h @movie.actors.collect(&:name).join(', ') %>
 </p>
 
 <p>
@@ -19,13 +24,18 @@
 </p>
 
 <p>
+  <b>Release date:</b>
+  <%= image_tag @movie.cover.url %>
+</p>
+
+<p>
   <b>Length:</b>
   <%=h @movie.length %>
 </p>
 
 <p>
-  <b>Extras:</b>
-  <%=h @movie.extras %>
+  <b>Amazon-ID(ASIN):</b>
+  <%=h @movie.amazon_id %>
 </p>
 
 

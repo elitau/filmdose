@@ -1,14 +1,7 @@
 class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
-  # auto_complete_for :movie, :title
-  # after_filter :do_stuff
-  
-  def do_stuff
-    # Movie
-    Movie.find
-  end
-  
+
   def index
     @movies = Movie.find(:all)
 
@@ -49,12 +42,21 @@ class MoviesController < ApplicationController
     @items = AmazonWs.find_by_title(params[:q]).collect(&:title)
     render :text => @items.join("\n")
   end
+  
+  def auto_complete_for_movie_details
+    @items = AmazonWs.find_by_title(params[:q])
+    @movie = AmazonWs.find_by_amazon_id(@items.first.amazon_id)
+    # @movie.save
+    # session[:movie] = @movie
+    render :partial => "selected_movie", :locals => { :movie => @items.first } 
+  end
 
   # POST /movies
   # POST /movies.xml
   def create
-    @movie = Movie.new(params[:movie])
-
+    # @movie = session[:movie]
+    @movie = AmazonWs.find_by_amazon_id(params[:amazon_id])
+    @movie.title = params[:movie][:title]
     respond_to do |format|
       if @movie.save
         flash[:notice] = 'Movie was successfully created.'
@@ -65,6 +67,7 @@ class MoviesController < ApplicationController
         format.xml  { render :xml => @movie.errors, :status => :unprocessable_entity }
       end
     end
+    session[:movie] = nil
   end
 
   # PUT /movies/1

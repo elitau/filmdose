@@ -7,35 +7,31 @@
     <%= f.label :title %><br />
     <%= f.text_field :title, :autocomplete => "off" %>
   </p>
-  <p>
-    <%= f.label :director_id %><br />
-    <%= f.text_field :director_id %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :release_date %><br />
-    <%= f.date_select :release_date %>
-  </p>
-  <p>
-    <%= f.label :length %><br />
-    <%= f.text_field :length %>
-  </p>
-  <p>
-    <%= f.label :extras %><br />
-    <%= f.text_field :extras %>
-  </p>
+  <div id="selected_movie">
+    <%# render :partial => "selected_movie" %>
+  </div>
   <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', movies_path %>
+<%# link_to 'Back', movies_path %>
+<%= link_to "Back", :action => "index" %>
 
 <script type="text/javascript" charset="utf-8">
+  function selectItem (li) {
+  	if (li.selectValue){
+      // $.ajax({
+      //         type: "GET",
+      //         url: "auto_complete_for_movie_details",
+      //         dataType: "script",
+      //         data: "q=" + li.selectValue
+      //       });
+      $('#selected_movie').load('auto_complete_for_movie_details', {q:li.selectValue});
+  	}
+  }
+
   $(document).ready(function() {
-    $("input#movie_title").autocomplete("auto_complete_for_movie_title");
+    $("input#movie_title").autocomplete("auto_complete_for_movie_title", { minChars:3, onItemSelect:selectItem });
   });
 </script>
