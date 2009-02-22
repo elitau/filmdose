@@ -69,3 +69,4 @@ Rails::Initializer.run do |config|
   
 end
 
+require 'system_config'
