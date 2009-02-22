@@ -30,8 +30,8 @@
         <a class="skip" href="#navigation" title="skip link">skip to navigation</a><span class="hideme">.</span>
         <a class="skip" href="#content" title="skip link">skip to content</a><span class="hideme">.</span>
         <!-- end: skip link navigation -->
-        <span><a href="#">Login</a> | <a href="#">Contact</a> | <a href="#">Imprint</a></span> </div>
-        <h1>Movies</h1>
+        <span><%= logged_in? ? link_to("Logout", logout_path) : link_to("Login", login_path) %> | <%= link_to "Signup", signup_path unless logged_in? %></span> </div>
+        <h1><%= controller.class.name.gsub("Controller", "") %></h1>
         <span><%= controller.action_name %></span>
       </div>
     <!-- begin: main navigation #nav -->
@@ -52,7 +52,7 @@
       <!-- begin: #col1 - first float column -->
       <div id="col1">
         <div id="col1_content" class="clearfix"> <a id="content" name="content"></a>
-          <p style="color: green"><%= flash[:notice] %></p>
+          <p style="color: green"><%= flash[:notice] || flash[:error]%></p>
           <!-- skiplink anchor: Content -->
           <%= yield  %>
         </div>

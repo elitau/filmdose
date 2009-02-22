@@ -1,7 +1,8 @@
 class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.xml
-
+  before_filter :login_required
+  
   def index
     @movies = Movie.find(:all)
 

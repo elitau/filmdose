@@ -70,3 +70,4 @@ Rails::Initializer.run do |config|
 end
 
 require 'system_config'
+require 'authenticated_system'
