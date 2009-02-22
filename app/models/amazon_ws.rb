@@ -1,3 +1,5 @@
+require 'rubygems'
+require 'amazon/aws/search'
 class AmazonWs
 
   include Amazon::AWS

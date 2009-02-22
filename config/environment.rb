@@ -68,4 +68,3 @@ Rails::Initializer.run do |config|
   
 end
 
-require 'amazon/aws/search'
